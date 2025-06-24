@@ -1,0 +1,102 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-upload-dropzone {
+  border: 2px dashed #667eea;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+}
+
+.photo-upload-dropzone:hover {
+  border-color: #764ba2;
+  background: linear-gradient(145deg, #e2e8f0, #f8fafc);
+  transform: translateY(-2px);
+}
+
+.photo-upload-dropzone.drag-active {
+  border-color: #4a5568;
+  background: linear-gradient(145deg, #e6fffa, #b2f5ea);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+.photo-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.folder-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.folder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.error-message {
+  color: #e53e3e;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  background: #fed7d7;
+  border-radius: 12px;
+  border: 1px solid #feb2b2;
+}
+
+.success-message {
+  color: #38a169;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  background: #c6f6d5;
+  border-radius: 12px;
+  border: 1px solid #9ae6b4;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
