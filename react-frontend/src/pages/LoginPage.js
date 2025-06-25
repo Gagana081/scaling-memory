@@ -30,6 +30,7 @@ const LoginPage = () => {
         </Box>
       )}
       <Login />
+        <p>hduhdojdsdijso;dm</p>
     </Box>
   );
 };
