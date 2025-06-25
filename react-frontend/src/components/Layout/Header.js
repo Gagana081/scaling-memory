@@ -55,7 +55,7 @@ const Header = ({ onCreateFolder }) => {
             fontSize: '1.5rem',
           }}
         >
-          Photo Gallery
+          Photo Gallery gagana
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
