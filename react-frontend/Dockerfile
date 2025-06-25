@@ -1,27 +1,34 @@
-# Build stage
+# 🏗️ Build Stage
 FROM node:20-alpine AS build
+
 WORKDIR /app
 
-# Install dependencies
+# Copy package files first to leverage Docker cache
 COPY package*.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy source code
+# Copy the rest of the app source
 COPY . .
 
-# Ensure binaries are executable (fix for some environments)
-RUN chmod -R 755 node_modules/.bin
-
-# Build the app
+# Build the React app
 RUN npm run build
 
-# Production stage
+# 📦 Production Stage
 FROM nginx:alpine
-# Copy built static files to Nginx's default public directory
+
+# Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy built static files from previous stage
 COPY --from=build /app/build /usr/share/nginx/html
+
+# Optional: Add custom Nginx config for single-page apps (SPA)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
 
-# Start Nginx server
+# Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
